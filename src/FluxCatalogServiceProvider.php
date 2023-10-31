@@ -12,6 +12,7 @@ use Nurdaulet\FluxCatalog\Observers\CatalogObserver;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogResource;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogSeoOptionResource;
 use Nurdaulet\FluxCatalog\Filament\Resources\PopularCatalogResource;
+use Illuminate\Filesystem\Filesystem;
 
 class FluxCatalogServiceProvider extends ServiceProvider
 {
