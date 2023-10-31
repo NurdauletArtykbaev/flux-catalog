@@ -13,6 +13,7 @@ use Nurdaulet\FluxCatalog\Filament\Resources\CatalogResource;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogSeoOptionResource;
 use Nurdaulet\FluxCatalog\Filament\Resources\PopularCatalogResource;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 
 class FluxCatalogServiceProvider extends ServiceProvider
 {
@@ -28,24 +29,8 @@ class FluxCatalogServiceProvider extends ServiceProvider
 
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
             $this->publishMigrations();
-
-
-            if (config('flux-catalog.models.use_filament_admin_panel')) {
-                Filament::navigation(function (NavigationBuilder $builder): NavigationBuilder {
-                    return $builder
-                        ->groups([
-                            NavigationGroup::make('Каталог')->items([
-                                ...CatalogResource::getNavigationItems(),
-                                ...PopularCatalogResource::getNavigationItems(),
-                            ]),
-                            NavigationGroup::make('Доплонительно')->items([
-                                ...CatalogSeoOptionResource::getNavigationItems(),
-                            ]),
-
-                        ]);
-                });
-            }
         }
+
         $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
     }
 
