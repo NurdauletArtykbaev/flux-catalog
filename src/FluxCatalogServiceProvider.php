@@ -42,9 +42,9 @@ class FluxCatalogServiceProvider extends ServiceProvider
     protected function publishMigrations()
     {
         $this->publishes([
-            __DIR__ . '/../database/migrations/check_catalogs_table.php.stub' => $this->getMigrationFileName(0,'check_catalogs_table.php'),
-            __DIR__ . '/../database/migrations/check_catalog_seo_options_table.php.stub' => $this->getMigrationFileName(1,'check_catalog_seo_options_table.php'),
-            __DIR__ . '/../database/migrations/check_popular_categories_table.php.stub' => $this->getMigrationFileName(2,'check_popular_categories_table.php'),
+            __DIR__ . '/../database/migrations/check_catalogs_table.php.stub' => $this->getMigrationFileName(0,'check_flux_catalog_catalogs_table.php'),
+            __DIR__ . '/../database/migrations/check_catalog_seo_options_table.php.stub' => $this->getMigrationFileName(1,'check_flux_catalog_catalog_seo_options_table.php'),
+            __DIR__ . '/../database/migrations/check_popular_categories_table.php.stub' => $this->getMigrationFileName(2,'check_flux_catalog_popular_categories_table.php'),
         ], 'flux-catalog-migrations');
     }
 
