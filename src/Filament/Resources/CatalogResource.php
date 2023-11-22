@@ -67,7 +67,7 @@ class CatalogResource extends Resource
                     ->maxWidth(1000)
                     ->label(trans('admin.is_first_place'))
                     ->inline(),
-                Forms\Components\Toggle::make('status')
+                Forms\Components\Toggle::make('is_active')
                     ->required()
                     ->label(trans('admin.is_active'))
                     ->inline(),
@@ -87,7 +87,7 @@ class CatalogResource extends Resource
                 Tables\Columns\TextColumn::make('parent.name')
                     ->label(trans('admin.parent_catalog'))->searchable(),
                 Tables\Columns\BooleanColumn::make('is_first_place')->label(trans('admin.is_first_place')),
-                Tables\Columns\BooleanColumn::make('status')->label(trans('admin.status')),
+                Tables\Columns\BooleanColumn::make('is_active')->label(trans('admin.status')),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()->label(trans('admin.created_at')),
             ])

@@ -50,7 +50,7 @@ class CatalogRepository
     public function list($cityId = null)
     {
         return config('flux-catalog.models.catalog')::withRecursiveQueryConstraint(function (Builder $query) {
-            $query->where('catalogs.status',1);
+            $query->where('catalogs.is_active',1);
         }, function () use ($cityId) {
             return config('flux-catalog.models.catalog')::tree()
                 ->orderBy('lft')
