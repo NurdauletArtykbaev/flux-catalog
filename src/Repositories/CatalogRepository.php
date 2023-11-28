@@ -29,6 +29,13 @@ class CatalogRepository
             ->get();
     }
 
+    public function getLinkCatalog($filters = [])
+    {
+        return config('flux-catalog.models.link_catalog')::active()->with('catalog')
+            ->limit($filters['limit'] ?? 5)
+            ->get();
+    }
+
     public function getCatalogForAdminPanel()
     {
         $catalogs = config('flux-catalog.models.catalog')::with(['ancestors' => fn($query) => $query->active()])->orderBy('name->ru')->get();

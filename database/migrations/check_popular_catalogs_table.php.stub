@@ -28,17 +28,17 @@ return new class extends Migration {
     private function checkColumns()
     {
         if (!Schema::hasColumn('popular_catalogs', 'catalog_id')) {
-            Schema::table('catalog_seo_options', function (Blueprint $table) {
+            Schema::table('popular_catalogs', function (Blueprint $table) {
                 $table->foreignId('catalog_id')->constrained()->cascadeOnDelete();
             });
         }
         if (!Schema::hasColumn('popular_catalogs', 'lft')) {
-            Schema::table('catalog_seo_options', function (Blueprint $table) {
+            Schema::table('popular_catalogs', function (Blueprint $table) {
                 $table->integer('lft')->nullable();
             });
         }
         if (!Schema::hasColumn('popular_catalogs', 'is_active')) {
-            Schema::table('catalog_seo_options', function (Blueprint $table) {
+            Schema::table('popular_catalogs', function (Blueprint $table) {
                 $table->boolean('is_active')->default(true);
             });
         }

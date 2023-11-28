@@ -25,4 +25,10 @@ class CatalogService
 
         return $this->catalogRepository->getPopularCatalog($filters);
     }
+
+    public function getLinkCatalogs($filters = [])
+    {
+
+        return $this->catalogRepository->getLinkCatalog($filters);
+    }
 }

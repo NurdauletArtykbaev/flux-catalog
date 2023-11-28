@@ -6,6 +6,7 @@ namespace Nurdaulet\FluxCatalog;
 use Filament\PluginServiceProvider;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogResource;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogSeoOptionResource;
+use Nurdaulet\FluxCatalog\Filament\Resources\LinkCatalogResource;
 use Nurdaulet\FluxCatalog\Filament\Resources\PopularCatalogResource;
 use Spatie\LaravelPackageTools\Package;
 
@@ -15,6 +16,7 @@ class FluxCatalogFilamentServiceProvider extends PluginServiceProvider
         PopularCatalogResource::class,
         CatalogSeoOptionResource::class,
         CatalogResource::class,
+        LinkCatalogResource::class,
     ];
 
     public function configurePackage(Package $package): void

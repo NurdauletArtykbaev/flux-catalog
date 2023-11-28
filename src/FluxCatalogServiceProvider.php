@@ -43,9 +43,10 @@ class FluxCatalogServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../database/migrations/check_catalogs_table.php.stub' => $this->getMigrationFileName(0,'check_flux_catalog_catalogs_table.php'),
-            __DIR__ . '/../database/migrations/check_catalog_rent_types_table.php.stub' => $this->getMigrationFileName(1,'check_flux_catalog_catalog_rent_types_table.php'),
-            __DIR__ . '/../database/migrations/check_catalog_seo_options_table.php.stub' => $this->getMigrationFileName(1,'check_flux_catalog_catalog_seo_options_table.php'),
-            __DIR__ . '/../database/migrations/check_popular_categories_table.php.stub' => $this->getMigrationFileName(2,'check_flux_catalog_popular_categories_table.php'),
+            __DIR__ . '/../database/migrations/check_catalog_rent_types_table.php.stub' => $this->getMigrationFileName(2,'check_flux_catalog_catalog_rent_types_table.php'),
+            __DIR__ . '/../database/migrations/check_catalog_seo_options_table.php.stub' => $this->getMigrationFileName(3,'check_flux_catalog_catalog_seo_options_table.php'),
+            __DIR__ . '/../database/migrations/check_popular_catalogs_table.php.stub' => $this->getMigrationFileName(4,'check_flux_catalog_popular_catalogs_table.php'),
+            __DIR__ . '/../database/migrations/check_link_catalogs_table.php.stub' => $this->getMigrationFileName(5,'check_flux_catalog_link_catalogs_table.php'),
         ], 'flux-catalog-migrations');
     }
 

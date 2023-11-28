@@ -35,6 +35,16 @@ class CatalogController
         });
     }
 
+    public function links(Request $request)
+    {
+        $lang = app()->getLocale();
+        $filters = $request->input('filters');
+
+        return Cache::remember("link-catalogs-$lang", config('flux-catalog.options.cache_expiration',3600), function () use ($filters) {
+            return CatalogResource::collection($this->catalogService->getLinkCatalogs($filters));
+        });
+    }
+
     public function seoOptions(Request $request)
     {
         $filters = $request->input('filters', []);

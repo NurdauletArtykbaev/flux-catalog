@@ -8,6 +8,7 @@ return [
     'models' => [
         'catalog' => \Nurdaulet\FluxCatalog\Models\Catalog::class,
         'catalog_seo_option' => \Nurdaulet\FluxCatalog\Models\CatalogSeoOption::class,
+        'link_catalog' => \Nurdaulet\FluxCatalog\Models\LinkCatalog::class,
         'popular_catalog' => \Nurdaulet\FluxCatalog\Models\PopularCatalog::class,
         'rent_type' => \Nurdaulet\FluxCatalog\Models\RentType::class,
         'item' => \Nurdaulet\FluxCatalog\Models\Item::class,
