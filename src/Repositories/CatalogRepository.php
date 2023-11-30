@@ -7,8 +7,6 @@ use Nurdaulet\FluxCatalog\Filters\CatalogSeoOptionFilter;
 
 class CatalogRepository
 {
-
-
     public function find($id, $relations = [])
     {
         return config('flux-catalog.models.catalog')::with($relations)->findOrFail($id);
@@ -71,6 +69,10 @@ class CatalogRepository
                 ->get()
                 ->toTree();
         });
+    }
+    public function mainList()
+    {
+        return config('flux-catalog.models.catalog')::whereNull('parent_id')->where('catalogs.is_active',1)->get();
     }
     public function descendantsAndSelfIds($id)
     {

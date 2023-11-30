@@ -10,9 +10,13 @@ class CatalogService
     {
     }
 
-    public function mainList($cityId = null)
+    public function list($cityId = null)
     {
         return $this->catalogRepository->list($cityId);
+    }
+    public function mainList()
+    {
+        return $this->catalogRepository->mainList();
     }
 
     public function getSeoOptions($filters = [])
