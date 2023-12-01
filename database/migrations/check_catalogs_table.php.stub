@@ -25,7 +25,8 @@ return new class extends Migration {
                 $table->integer('depth')->nullable();
                 $table->tinyInteger('is_first_place')->default(1);
                 $table->boolean('is_active')->default(false);
-                $table->string('slug');
+                $table->string('slug')->nullable();
+                $table->integer('type')->default(1);
                 $table->text('seo_title')->nullable();
                 $table->text('seo_text')->nullable();
                 $table->softDeletes();
@@ -90,6 +91,11 @@ return new class extends Migration {
         if (!Schema::hasColumn('catalogs', 'seo_text')) {
             Schema::table('catalogs', function (Blueprint $table) {
                 $table->text('seo_text')->nullable();
+            });
+        }
+        if (!Schema::hasColumn('catalogs', 'type')) {
+            Schema::table('catalogs', function (Blueprint $table) {
+                $table->integer('type')->default(1);
             });
         }
         if (!Schema::hasColumn('catalogs', 'deleted_at')) {

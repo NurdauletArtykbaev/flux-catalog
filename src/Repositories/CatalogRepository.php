@@ -4,6 +4,7 @@ namespace Nurdaulet\FluxCatalog\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
 use Nurdaulet\FluxCatalog\Filters\CatalogSeoOptionFilter;
+use Nurdaulet\FluxCatalog\Helpers\CatalogHelper;
 
 class CatalogRepository
 {
@@ -70,9 +71,19 @@ class CatalogRepository
                 ->toTree();
         });
     }
-    public function mainList()
+    public function mainList($filters = [])
     {
-        return config('flux-catalog.models.catalog')::whereNull('parent_id')->where('catalogs.is_active',1)->get();
+        return config('flux-catalog.models.catalog')::whereNull('parent_id')
+            ->when(isset($filters['type']), function ($query) use ($filters) {
+                $type = null;
+                foreach (CatalogHelper::TYPES as $key => $itemType) {
+                    if ($itemType == $filters['type']) {
+                        $type = $key;
+                    }
+                }
+                return $query->where('type', $type);
+            })
+            ->where('catalogs.is_active',1)->get();
     }
     public function descendantsAndSelfIds($id)
     {

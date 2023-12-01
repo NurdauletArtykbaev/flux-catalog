@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogResource\RelationManagers\RentTypeRelationManager;
+use Nurdaulet\FluxCatalog\Helpers\CatalogHelper;
 use Nurdaulet\FluxCatalog\Models\Catalog;
 
 class CatalogResource extends Resource
@@ -62,11 +63,14 @@ class CatalogResource extends Resource
                     ])
                     ->hint('Translatable')
                     ->hintIcon('heroicon-s-translate'),
+                Forms\Components\Select::make('type')
+                    ->options(CatalogHelper::getTypes()),
                 Forms\Components\Toggle::make('is_first_place')
                     ->required()
                     ->maxWidth(1000)
                     ->label(trans('admin.is_first_place'))
                     ->inline(),
+
                 Forms\Components\Toggle::make('is_active')
                     ->required()
                     ->label(trans('admin.is_active'))

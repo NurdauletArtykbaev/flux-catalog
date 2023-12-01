@@ -28,8 +28,9 @@ class CatalogController
     public function mainList(Request $request)
     {
         $lang = app()->getLocale();
-        return Cache::remember("main-catalogs-city-$lang", config('flux-catalog.options.cache_expiration', 3600), function () {
-            return CatalogResource::collection($this->catalogService->mainList());
+        $filters = $request->input('filters', []);
+        return Cache::remember("main-catalogs-city-$lang-" . json_encode($filters), config('flux-catalog.options.cache_expiration', 3600), function () use ($filters) {
+            return CatalogResource::collection($this->catalogService->mainList($filters));
         });
     }
 

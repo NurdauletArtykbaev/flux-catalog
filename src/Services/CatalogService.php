@@ -14,9 +14,9 @@ class CatalogService
     {
         return $this->catalogRepository->list($cityId);
     }
-    public function mainList()
+    public function mainList($filters =[])
     {
-        return $this->catalogRepository->mainList();
+        return $this->catalogRepository->mainList($filters);
     }
 
     public function getSeoOptions($filters = [])
