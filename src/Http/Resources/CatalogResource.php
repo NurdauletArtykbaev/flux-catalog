@@ -39,6 +39,9 @@ class CatalogResource extends JsonResource
             'childs_count' => $this->whenLoaded('children', function () {
                 return  $this->children->count();
             }),
+            'properties' => $this->whenLoaded('properties', function () {
+                return  PropertiesResource::collection($this->properties);
+            }),
             'slug' => $this->slug,
             'origin_items_count' => $this->whenHas('items_count', $this->items_count),
             'items_count' => $this->when($ifUseListItemsCount, $itemsCount ?? 0),

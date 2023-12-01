@@ -56,10 +56,11 @@ class CatalogRepository
     public function list($cityId = null)
     {
         return config('flux-catalog.models.catalog')::withRecursiveQueryConstraint(function (Builder $query) {
-            $query->where('catalogs.is_active',1);
+            $query->where('catalogs.is_active',1)->with('properties.values');
         }, function () use ($cityId) {
             return config('flux-catalog.models.catalog')::tree()
                 ->orderBy('lft')
+                ->with('properties.values')
                 ->when(config('flux-catalog.options.use_list_items_count'), function($query) use ($cityId) {
                     return $query->withCount([
                         'items' => fn($query) => $query->when($cityId, fn($query) => $query->whereHas('cities', fn($query) => $query->where('cities.id', $cityId)))

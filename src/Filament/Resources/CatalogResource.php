@@ -10,6 +10,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Nurdaulet\FluxCatalog\Filament\Resources\CatalogResource\RelationManagers\PropertyRelationManager;
 use Nurdaulet\FluxCatalog\Filament\Resources\CatalogResource\RelationManagers\RentTypeRelationManager;
 use Nurdaulet\FluxCatalog\Helpers\CatalogHelper;
 use Nurdaulet\FluxCatalog\Models\Catalog;
@@ -109,9 +110,13 @@ class CatalogResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
+        $data = [
             RentTypeRelationManager::class,
         ];
+        if (config('flux-catalog.options.is_enabled_catalog_property')) {
+            $data[] = PropertyRelationManager::class;
+        }
+        return  $data;
     }
 
 

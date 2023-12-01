@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        if (Schema::hasTable('catalog_rent_types')) {
+        if (Schema::hasTable('catalogs')) {
             $this->checkColumns();
         } else {
-            Schema::create('catalog_rent_types', function (Blueprint $table) {
+            Schema::create('catalog_property', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('catalog_id')->constrained('catalogs')->cascadeOnDelete();
-                $table->foreignId('rent_type_id')->constrained('rent_types')->cascadeOnDelete();
+                $table->foreignId('property_id')->nullable()->constrained('properties')->cascadeOnDelete();
                 $table->timestamps();
             });
         }
@@ -24,14 +24,15 @@ return new class extends Migration {
 
     private function checkColumns()
     {
-        if (!Schema::hasColumn('catalog_rent_types', 'catalog_id')) {
-            Schema::table('catalog_rent_types', function (Blueprint $table) {
+        if (!Schema::hasColumn('catalog_property', 'catalog_id')) {
+            Schema::table('catalog_property', function (Blueprint $table) {
                 $table->foreignId('catalog_id')->nullable()->constrained('catalogs')->cascadeOnDelete();
             });
         }
-        if (!Schema::hasColumn('catalog_rent_types', 'rent_type_id')) {
-            Schema::table('catalog_rent_types', function (Blueprint $table) {
-                $table->foreignId('rent_type_id')->nullable()->constrained('rent_types')->cascadeOnDelete();
+        if (!Schema::hasColumn('catalog_property', 'property_id')) {
+            Schema::table('catalog_property', function (Blueprint $table) {
+                $table->foreignId('property_id')->nullable()->constrained('properties')->cascadeOnDelete();
+
             });
         }
     }
@@ -41,6 +42,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('catalog_rent_types');
+        Schema::dropIfExists('catalog_property');
     }
 };

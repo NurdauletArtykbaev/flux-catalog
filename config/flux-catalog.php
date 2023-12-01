@@ -1,10 +1,5 @@
 <?php
 return [
-    'table_names'=> [
-        'catalog' => 'catalogs',
-        'popular_catalog' => 'popular_catalogs',
-        'catalog_seo_options' => 'catalog_seo_options',
-    ],
     'models' => [
         'catalog' => \Nurdaulet\FluxCatalog\Models\Catalog::class,
         'catalog_seo_option' => \Nurdaulet\FluxCatalog\Models\CatalogSeoOption::class,
@@ -20,6 +15,7 @@ return [
     ],
     'options' => [
         'use_filament_admin_panel' => true,
+        'is_enabled_catalog_property' => false,
         'storage_disk' => 's3',
         'use_list_items_count' => false,
         'cache_expiration' => 269746

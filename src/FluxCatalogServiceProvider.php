@@ -47,6 +47,10 @@ class FluxCatalogServiceProvider extends ServiceProvider
             __DIR__ . '/../database/migrations/check_catalog_seo_options_table.php.stub' => $this->getMigrationFileName(3,'check_flux_catalog_catalog_seo_options_table.php'),
             __DIR__ . '/../database/migrations/check_popular_catalogs_table.php.stub' => $this->getMigrationFileName(4,'check_flux_catalog_popular_catalogs_table.php'),
             __DIR__ . '/../database/migrations/check_link_catalogs_table.php.stub' => $this->getMigrationFileName(5,'check_flux_catalog_link_catalogs_table.php'),
+            __DIR__ . '/../database/migrations/check_properties_table.php.stub' => $this->getMigrationFileName(6,'check_flux_catalog_properties_table.php'),
+            __DIR__ . '/../database/migrations/check_values_table.php.stub' => $this->getMigrationFileName(7,'check_flux_catalog_values_table.php'),
+            __DIR__ . '/../database/migrations/check_property_value_table.php.stub' => $this->getMigrationFileName(8,'check_flux_catalog_property_value_table.php'),
+            __DIR__ . '/../database/migrations/check_catalog_property_table.php.stub' => $this->getMigrationFileName(9,'check_flux_catalog_catalog_property_table.php'),
         ], 'flux-catalog-migrations');
     }
 

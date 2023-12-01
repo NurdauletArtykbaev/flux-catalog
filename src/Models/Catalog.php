@@ -49,7 +49,10 @@ class Catalog extends Model
     {
         return $this->belongsToMany(RentType::class,CatalogRentType::class);
     }
-
+    public function properties()
+    {
+        return $this->belongsToMany(Property::class, 'catalog_property', 'catalog_id','property_id');
+    }
     public function scopeActive($query)
     {
         return $query->where('is_active', 1);
