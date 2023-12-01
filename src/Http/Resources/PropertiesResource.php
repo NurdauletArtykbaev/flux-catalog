@@ -3,6 +3,7 @@
 namespace Nurdaulet\FluxCatalog\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Nurdaulet\FluxCatalog\Helpers\PropertyHelper;
 
 class PropertiesResource extends JsonResource
 {
@@ -16,7 +17,7 @@ class PropertiesResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'input_type' => $this->input_type,
+            'input_type' => PropertyHelper::INPUT_TYPES[$this->input_type],
             'name' => $this->name,
             'values' => ValuesResource::collection($this->whenLoaded('values'))
         ];

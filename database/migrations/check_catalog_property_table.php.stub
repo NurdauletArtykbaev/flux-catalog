@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        if (Schema::hasTable('catalogs')) {
+        if (Schema::hasTable('catalog_property')) {
             $this->checkColumns();
         } else {
             Schema::create('catalog_property', function (Blueprint $table) {
