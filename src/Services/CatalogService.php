@@ -14,7 +14,8 @@ class CatalogService
     {
         return $this->catalogRepository->list($cityId);
     }
-    public function mainList($filters =[])
+
+    public function mainList($filters = [])
     {
         return $this->catalogRepository->mainList($filters);
     }

@@ -42,6 +42,7 @@ class CatalogResource extends JsonResource
             'properties' => $this->whenLoaded('properties', function () {
                 return  PropertiesResource::collection($this->properties);
             }),
+            'rent_types' => RentTypeResource::collection($this->whenLoaded('rentTypes')),
             'slug' => $this->slug,
             'origin_items_count' => $this->whenHas('items_count', $this->items_count),
             'items_count' => $this->when($ifUseListItemsCount, $itemsCount ?? 0),
