@@ -59,7 +59,7 @@ class FluxCatalogServiceProvider extends ServiceProvider
      */
     protected function getMigrationFileName($index,string $migrationFileName): string
     {
-        $timestamp = date('Y_m_d_His');
+        $timestamp = date('Y_m_d_His','1636048800');
 
         $filesystem = $this->app->make(Filesystem::class);
 

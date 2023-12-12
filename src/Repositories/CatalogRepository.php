@@ -45,23 +45,23 @@ class CatalogRepository
                 foreach ($catalog->ancestors as $parent) {
                     $name .= $parent->name . '-';
                 }
-                $name =  $name . $catalog->name;
+                $name = $name . $catalog->name;
             }
             $catalog->name = $name;
         }
         $catalogs = $catalogs->sortBy('name');
-        return $catalogs->pluck('name','id')->toArray();
+        return $catalogs->pluck('name', 'id')->toArray();
     }
 
     public function list($cityId = null)
     {
         return config('flux-catalog.models.catalog')::withRecursiveQueryConstraint(function (Builder $query) {
-            $query->where('catalogs.is_active',1)->with('properties.values');
+            $query->where('catalogs.is_active', 1)->with('properties.values');
         }, function () use ($cityId) {
             return config('flux-catalog.models.catalog')::tree()
                 ->orderBy('lft')
                 ->with(['properties.values', 'rentTypes'])
-                ->when(config('flux-catalog.options.use_list_items_count'), function($query) use ($cityId) {
+                ->when(config('flux-catalog.options.use_list_items_count'), function ($query) use ($cityId) {
                     return $query->withCount([
                         'items' => fn($query) => $query->when($cityId, fn($query) => $query->whereHas('cities', fn($query) => $query->where('cities.id', $cityId)))
                             ->active()
@@ -72,6 +72,7 @@ class CatalogRepository
                 ->toTree();
         });
     }
+
     public function mainList($filters = [])
     {
         return config('flux-catalog.models.catalog')::whereNull('parent_id')
@@ -84,8 +85,9 @@ class CatalogRepository
                 }
                 return $query->where('type', $type);
             })
-            ->where('catalogs.is_active',1)->get();
+            ->where('catalogs.is_active', 1)->get();
     }
+
     public function descendantsAndSelfIds($id)
     {
         return config('flux-catalog.models.catalog')::with('descendantsAndSelf')

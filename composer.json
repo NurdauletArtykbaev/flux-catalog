@@ -25,9 +25,6 @@
   },
   "extra": {
     "laravel": {
-      "providers": [
-        "Nurdaulet\\FluxCatalog\\FluxCatalogServiceProvider"
-      ],
       "aliases": {
           "TextConverter": "Nurdaulet\\FluxCatalog\\Facades\\TextConverter"
       }
