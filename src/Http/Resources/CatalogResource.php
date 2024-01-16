@@ -44,6 +44,7 @@ class CatalogResource extends JsonResource
             }),
             'rent_types' => RentTypeResource::collection($this->whenLoaded('rentTypes')),
             'slug' => $this->slug,
+            'type' => $this->type ?? 'main',
             'origin_items_count' => $this->whenHas('items_count', $this->items_count),
             'items_count' => $this->when($ifUseListItemsCount, $itemsCount ?? 0),
         ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nurdaulet\FluxCatalog\Facades\Helpers;
+namespace Nurdaulet\FluxCatalog\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
